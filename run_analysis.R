@@ -72,7 +72,7 @@ complete_data$activity <- activity_labels$label[match(complete_data$activity,
 means_and_std<- complete_data[, grepl("activity|subject|mean\\(\\)|std\\(\\)", 
                                       names(complete_data))]
 
-# Fix the "BodyBody" typo in some of the column names
+# Quicker Renaming Function
 fast_renaming <- function(original, replacement) {
   gsub(pattern = original, replacement = replacement, x = names(means_and_std))
 }
