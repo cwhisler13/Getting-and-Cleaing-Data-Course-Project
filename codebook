@@ -1,0 +1,302 @@
+Data Sources/Summary
+
+These data were downloaded from the University of California Irvine (UCI) Center for Machine Learning and Intelligent Systems website. The data are multivariate, time-series data data that were donated on 2012-12-10 as per UCI's website.
+
+The data come from an experiement where 30 volunteers (subjects) participated in 6 recorded physical activities, which were manually coded based on video data. Measurements were taken during these exercises using accelerometers and gyroscopes on Samsung Galaxy SII's that were attached to participants' waists. These data were divided into various datasets for training and testing.
+
+Data Naming/Renaming Conventions
+
+Subject and Activity Data:
+
+subject
+The subject is the person taking part in the activity. Each person that took part in this study has been assigned an ID number from 1-30. This serves as the unique identifier for each person that participated in the study. These data were taken from the testing and training subjects datasets.
+
+activity
+There are 6 activities that each subject participated in during the study. In the original dataset these were coded using ID numbers from 1-6. However, these numbers were replaced with more descriptive activity labels using data mapping from the activity labels dataset found in activity_labels.txt in the original zip file. These data were taken from the testing and training activities datasets and then labeled using the activity_labels dataset.
+
+The unique activities each participant took part in are as follows:
+
+"LAYING"
+"SITTING"
+"STANDING"
+"WALKING"
+"WALKING_DOWNSTAIRS"
+"WALKING_UPSTAIRS"
+
+Remaining Measured Variables:
+
+The remaining variables have been summarized by taking their mean grouped by subject and activity from the original combined test and training data. These variables were selected based on the instruction to include mean and standard deviation measurements by subject and activity. Mean frequency and angle variables were not included in these data, as they were calculated using materially different methods and did not have an associated standard deviation. Hence, they were interpreted not to be included as part of the "mean" variables requested.
+
+These measurement variables have also been renamed based on the information provided in the "features_info.txt" file provided in the downloadable zip file. The goal of this renaming exercise was to make the variables more readable and understandable for the end-user. I will provide the rationale behind the renaming of the variables and then list each of these variables in the following section. Note that variables were made to be all lower case and use underscores for spacing in order to increase readability and decrease opportunities for typos.
+
+Renaming rationale/methods:
+
+Variables were renamed using the following methods:
+
+1) The type of measurement (mean or standard deviation) was placed at the front of the variable name to make the names more friendly to natural language. All variables should start with "mean_of" or "standard_deviation_of" based on the instruction to include only mean and standard deviation measurements.
+
+2) The leading "t" or "f" found in the original dataset have been replaced with "time_domain_of" and "frequency_domain_of" respectively based on the description of these abbreviations in the original features_info.txt file.
+
+3) "Acc" and "Gyro" were replaced with "accelerometer_measurement_of" and "gyrometer_measurement_of" respectively in order to make it clear that these represent measurements taken by these tools respectively. This is based on the information in the opening sentence of features_info.txt: "The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ"
+
+4) "BodyBody" was replaced with just "Body", as it was determined to be a typo since it was not discussed in any of the documentation for the data.
+
+5) "BodyJerkMag" was replaced with "magnitude_of_3_axial_acceleration_of_body_jerk_signals" based on the description in the features_info.txt, which states that Mag represents "the magnitude of these three-dimensional signals were calculated using the Euclidean norm" and "Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals."
+
+6) "BodyJerk" without a trailing "Mag" was replaced with "acceleration_of_body_jerk_signals" based on the description, "the body linear acceleration and angular velocity were derived in time to obtain Jerk signals" in features_info.txt.
+
+7) "BodyMag" was renamed "magnitude_of_3_axial_body_acceleration_signals" based on the previous descriptions of "Mag" described above.
+
+8) "Body" with no trailing "Jerk" or "Mag" was replaced with "body_acceleration_signals".
+
+9) "GravityMag" was replace with "magnitude_of_gravity_acceleration_signals" due to the following description in features_info.txt "Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz", along with the description of "Mag", which can be found earlier in this document.
+
+10) "Gravity" with no trailing "Mag" was replaced with gravity_acceleration_signals.
+
+11) "-X", "-Y", and "-Z" were replaced with "on_x_axial_plane", "on_y_axial_plane", and "on_z_axial_plane" due to the following text from the "features_info.txt" document: "These signals were used to estimate variables of the feature vector for each pattern:
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions."
+
+You can find all the information provided in the "features_info.txt" document at the bottom of this page.
+
+Variables rename using the conventions listed above:
+
+[3] "mean_of_accelerometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_x_axial_plane"
+ [4] "mean_of_accelerometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_y_axial_plane"
+ [5] "mean_of_accelerometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_z_axial_plane"
+ [6] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_x_axial_plane"
+ [7] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_y_axial_plane"
+ [8] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_z_axial_plane"
+ [9] "mean_of_accelerometer_measurement_of_time_domain_signals_of_gravity_acceleration_signals_on_x_axial_plane"
+[10] "mean_of_accelerometer_measurement_of_time_domain_signals_of_gravity_acceleration_signals_on_y_axial_plane"
+[11] "mean_of_accelerometer_measurement_of_time_domain_signals_of_gravity_acceleration_signals_on_z_axial_plane"
+[12] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_gravity_acceleration_signals_on_x_axial_plane"
+[13] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_gravity_acceleration_signals_on_y_axial_plane"
+[14] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_gravity_acceleration_signals_on_z_axial_plane"
+[15] "mean_of_accelerometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_x_axial_plane"
+[16] "mean_of_accelerometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_y_axial_plane"
+[17] "mean_of_accelerometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_z_axial_plane"
+[18] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_x_axial_plane"
+[19] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_y_axial_plane"
+[20] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_z_axial_plane"
+[21] "mean_of_gyrometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_x_axial_plane"
+[22] "mean_of_gyrometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_y_axial_plane"
+[23] "mean_of_gyrometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_z_axial_plane"
+[24] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_x_axial_plane"
+[25] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_y_axial_plane"
+[26] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_raw_body_acceleration_signals_on_z_axial_plane"
+[27] "mean_of_gyrometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_x_axial_plane"
+[28] "mean_of_gyrometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_y_axial_plane"
+[29] "mean_of_gyrometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_z_axial_plane"
+[30] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_x_axial_plane"
+[31] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_y_axial_plane"
+[32] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_acceleration_of_body_jerk_signals_on_z_axial_plane"
+[33] "mean_of_accelerometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_body_acceleration_signals"
+[34] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_body_acceleration_signals"
+[35] "mean_of_accelerometer_measurement_of_time_domain_signals_of_magnitude_of_gravity_acceleration_signals"
+[36] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_magnitude_of_gravity_acceleration_signals"
+[37] "mean_of_accelerometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[38] "standard_deviation_of_accelerometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[39] "mean_of_gyrometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_body_acceleration_signals"
+[40] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_body_acceleration_signals"
+[41] "mean_of_gyrometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[42] "standard_deviation_of_gyrometer_measurement_of_time_domain_signals_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[43] "mean_of_accelerometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_x_axial_plane"
+[44] "mean_of_accelerometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_y_axial_plane"
+[45] "mean_of_accelerometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_z_axial_plane"
+[46] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_x_axial_plane"
+[47] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_y_axial_plane"
+[48] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_z_axial_plane"
+[49] "mean_of_accelerometer_measurement_of_frequency_domain_of_acceleration_of_body_jerk_signals_on_x_axial_plane"
+[50] "mean_of_accelerometer_measurement_of_frequency_domain_of_acceleration_of_body_jerk_signals_on_y_axial_plane"
+[51] "mean_of_accelerometer_measurement_of_frequency_domain_of_acceleration_of_body_jerk_signals_on_z_axial_plane"
+[52] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_acceleration_of_body_jerk_signals_on_x_axial_plane"
+[53] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_acceleration_of_body_jerk_signals_on_y_axial_plane"
+[54] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_acceleration_of_body_jerk_signals_on_z_axial_plane"
+[55] "mean_of_gyrometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_x_axial_plane"
+[56] "mean_of_gyrometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_y_axial_plane"
+[57] "mean_of_gyrometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_z_axial_plane"
+[58] "standard_deviation_of_gyrometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_x_axial_plane"
+[59] "standard_deviation_of_gyrometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_y_axial_plane"
+[60] "standard_deviation_of_gyrometer_measurement_of_frequency_domain_of_raw_body_acceleration_signals_on_z_axial_plane"
+[61] "mean_of_accelerometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_body_acceleration_signals"
+[62] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_body_acceleration_signals"
+[63] "mean_of_accelerometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[64] "standard_deviation_of_accelerometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[65] "mean_of_gyrometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_body_acceleration_signals"
+[66] "standard_deviation_of_gyrometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_body_acceleration_signals"
+[67] "mean_of_gyrometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+[68] "standard_deviation_of_gyrometer_measurement_of_frequency_domain_of_magnitude_of_3_axial_acceleration_of_body_jerk_signals"
+
+
+
+Feature Selection
+=================
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
+
+These signals were used to estimate variables of the feature vector for each pattern:
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are:
+
+mean(): Mean value
+std(): Standard deviation
+mad(): Median absolute deviation
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values.
+iqr(): Interquartile range
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal
+kurtosis(): kurtosis of the frequency domain signal
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+
+The complete list of variables of each feature vector is available in 'features.txt'ata Sources/Summary
+
+These data were downloaded from the University of California Irvine (UCI) Center for Machine Learning and Intelligent Systems website. The data are multivariate, time-series data data that were donated on 2012-12-10 as per UCI's website.
+
+The data come from an experiement where 30 volunteers (subjects) participated in 6 recorded physical activities, which were manually coded based on video data. Measurements were taken during these exercises using accelerometers and gyroscopes on Samsung Galaxy SII's that were attached to participants' waists. These data were divided into various datasets for training and testing.
+
+Data Naming/Renaming Conventions
+
+Subject and Activity Data:
+
+subject
+The subject is the person taking part in the activity. Each person that took part in this study has been assigned an ID number from 1-30. This serves as the unique identifier for each person that participated in the study. These data were taken from the testing and training subjects datasets.
+
+activity
+There are 6 activities that each subject participated in during the study. In the original dataset these were coded using ID numbers from 1-6. However, these numbers were replaced with more descriptive activity labels using data mapping from the activity labels dataset found in activity_labels.txt in the original zip file. These data were taken from the testing and training activities datasets and then labeled using the activity_labels dataset.
+
+
+Remaining Measured Variables:
+
+The remaining variables have been summarized by taking their mean grouped by subject and activity from the original combined test and training data. These variables were selected based on the instruction to include mean and standard deviation measurements by subject and activity. Mean frequency and angle variables were not included in these data, as they were calculated using materially different methods and did not have an associated standard deviation. Hence, they were interpreted not to be included as part of the "mean" variables requested.
+
+These measurement variables have also been renamed based on the information provided in the "features_info.txt" file provided in the downloadable zip file. The goal of this renaming exercise was to make the variables more readable and understandable for the end-user. I will provide the rationale behind the renaming of the variables and then list each of these variables in the following section. Note that variables were made to be all lower case and use underscores for spacing in order to increase readability and decrease opportunities for typos.
+
+Renaming rationale/methods:
+
+Variables were renamed using the following methods:
+
+1) The type of measurement (mean or standard deviation) was placed at the front of the variable name to make the names more friendly to natural language. All variables should start with "mean_of" or "standard_deviation_of" based on the instruction to include only mean and standard deviation measurements.
+
+2) The leading "t" or "f" found in the original dataset have been replaced with "time_domain_of" and "frequency_domain_of" respectively based on the description of these abbreviations in the original features_info.txt file.
+
+3) "Acc" and "Gyro" were replaced with "accelerometer_measurement_of" and "gyrometer_measurement_of" respectively in order to make it clear that these represent measurements taken by these tools respectively. This is based on the information in the opening sentence of features_info.txt: "The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ"
+
+4) "BodyBody" was replaced with just "Body", as it was determined to be a typo since it was not discussed in any of the documentation for the data.
+
+5) "BodyJerkMag" was replaced with "magnitude_of_3_axial_acceleration_of_body_jerk_signals" based on the description in the features_info.txt, which states that Mag represents "the magnitude of these three-dimensional signals were calculated using the Euclidean norm" and "Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals."
+
+6) "BodyJerk" without a trailing "Mag" was replaced with "acceleration_of_body_jerk_signals" based on the description, "the body linear acceleration and angular velocity were derived in time to obtain Jerk signals" in features_info.txt.
+
+7) "BodyMag" was renamed "magnitude_of_3_axial_body_acceleration_signals" based on the previous descriptions of "Mag" described above.
+
+8) "Body" with no trailing "Jerk" or "Mag" was replaced with "body_acceleration_signals".
+
+9) "GravityMag" was replace with "magnitude_of_gravity_acceleration_signals" due to the following description in features_info.txt "Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz", along with the description of "Mag", which can be found earlier in this document.
+
+10) "Gravity" with no trailing "Mag" was replaced with gravity_acceleration_signals.
+
+11) "-X", "-Y", and "-Z" were replaced with "on_x_axial_plane", "on_y_axial_plane", and "on_z_axial_plane" due to the following text from the "features_info.txt" document: "These signals were used to estimate variables of the feature vector for each pattern:
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions."
+
+You can find all the information provided in the "features_info.txt" document at the bottom of this page.
+
+Variables rename using the conventions listed above:
+
+
+
+Feature Selection
+=================
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
+
+These signals were used to estimate variables of the feature vector for each pattern:
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are:
+
+mean(): Mean value
+std(): Standard deviation
+mad(): Median absolute deviation
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values.
+iqr(): Interquartile range
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal
+kurtosis(): kurtosis of the frequency domain signal
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
