@@ -102,3 +102,5 @@ summary_data <- means_and_std %>%
             FUN = mean) %>%
   select(-(subject:activity)) %>%
   rename(subject = Group.1, activity = Group.2)
+
+write.table(summary_data, file = "tidy_data_getting_and_cleaning_data_course_project.txt", row.names = FALSE)
