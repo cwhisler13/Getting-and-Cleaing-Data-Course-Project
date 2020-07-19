@@ -14,7 +14,7 @@ The script then creates a dataframe of only subjects, activities, and columns th
 
 The script then renames columns to make them more descriptive based on information found in the features_label and instructions in the assignment.
 
-Finally, all of these columns are grouped by the subject and activity and aggregated to a single mean measurement per variable in order to create a tidy dataset as instructed on Coursera. 
+Finally, all of these columns are grouped by the subject and activity and aggregated to a single mean measurement per variable in order to create a tidy dataset as instructed on Coursera. This tidy dataset is included in this Github Repo.
 
 The codebook describes manipulation that was done to all variables, along with all renaming that was done to make variables more interpretable.
 
