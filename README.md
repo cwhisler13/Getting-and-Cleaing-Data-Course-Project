@@ -1,4 +1,4 @@
-# Getting-and-Cleaing-Data-Course-Project
+# Getting-and-Cleaning-Data-Course-Project
 
 This project is made up of a script called run_analysis.R and a codebook.
 
