@@ -16,3 +16,5 @@ The script then renames columns to make them more descriptive based on informati
 
 Finally, all of these columns are grouped by the subject and activity and aggregated to a single mean measurement per variable in order to create a tidy dataset as instructed on Coursera. 
 
+The codebook describes manipulation that was done to all variables, along with all renaming that was done to make variables more interpretable.
+
